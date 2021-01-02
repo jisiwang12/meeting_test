@@ -1,0 +1,13 @@
+C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.exe.config
+C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.exe
+C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.pdb
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csprojAssemblyReference.cache
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Login.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Properties.Resources.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csproj.GenerateResource.cache
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csproj.CoreCompileInputs.cache
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.exe
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.pdb
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Main_Menu.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Add_Meeting.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.ChooseUser.resources
