@@ -11,3 +11,7 @@ C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.pdb
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Main_Menu.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Add_Meeting.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.ChooseUser.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Task_Waitting.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Submitted.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.FormInfo.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Test.resources

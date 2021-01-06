@@ -8,10 +8,17 @@ using System.Threading.Tasks;
 
 namespace meeting_test.dao
 {
+    /**
+     * 数据库服务
+     */
     class My_SqlCon
     {
         private String sqlStringCon = "server=localhost;uid=gsq;pwd=123;database=My_Test";
         
+        /**
+         * 验证用户
+         * @mysql 传入数据库参数 
+         */
         public SqlDataReader getSqlDr_Login(String mysql)
         {
             SqlConnection connection = new SqlConnection(sqlStringCon);
@@ -22,6 +29,10 @@ namespace meeting_test.dao
             return dr;
         }
 
+        /**
+         * 获取sqlcommand
+         * @mysql 数据库语句
+         */
         public SqlCommand getCmd(String mysql)
         {
             SqlConnection connection = new SqlConnection(sqlStringCon);
@@ -30,6 +41,10 @@ namespace meeting_test.dao
             return cmd;
         }
 
+        /**
+         * 获取SqlDateSet
+         * @mysql 传入的字符串参数
+         */
         public DataSet getSqlds(String mysql)
         {
             SqlConnection connection = new SqlConnection(sqlStringCon);
