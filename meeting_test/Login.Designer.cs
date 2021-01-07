@@ -29,12 +29,14 @@ namespace meeting_test
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button_Login = new System.Windows.Forms.Button();
             this.label_Meetting = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_UserName = new System.Windows.Forms.TextBox();
             this.textBox_Passwd = new System.Windows.Forms.TextBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // button_Login
@@ -50,7 +52,7 @@ namespace meeting_test
             // label_Meetting
             // 
             this.label_Meetting.AutoSize = true;
-            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
             this.label_Meetting.Location = new System.Drawing.Point(244, 30);
             this.label_Meetting.Name = "label_Meetting";
             this.label_Meetting.Size = new System.Drawing.Size(159, 35);
@@ -93,6 +95,11 @@ namespace meeting_test
             this.textBox_Passwd.TabIndex = 1;
             this.textBox_Passwd.UseSystemPasswordChar = true;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // Login
             // 
             this.AcceptButton = this.button_Login;
@@ -110,8 +117,9 @@ namespace meeting_test
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
 
         #endregion
 

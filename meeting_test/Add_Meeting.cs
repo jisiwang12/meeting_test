@@ -154,7 +154,7 @@ namespace meeting_test
                 //String mysql = "insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject)"+
                               // " values ('"+textBox1.Text+"','"+textBox2.Text+"','"+dateTimePicker1.Value+"','"+textBox3.Text+"','"+richTextBox1.Text+"','"+DateTime.Now+"','"+comboBox1.Text+"','"+serial+"','"+textBox4.Text+"')";
                               String mysql =
-                                  $"insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject,status) values ('{textBox1.Text}','{textBox2.Text}','{dateTimePicker1.Value}','{textBox3.Text}','{richTextBox1.Text}','{DateTime.Now}','{comboBox1.Text}','{serial}','{textBox4.Text}','{status}')";
+                                  $"insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject,status) values ('{textBox1.Text}','{textBox2.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}','{textBox3.Text}','{richTextBox1.Text}','{DateTime.Now}','{comboBox1.Text}','{serial}','{textBox4.Text}','{status}')";
                               
                 SqlCommand cmd = mySqlCon.getCmd(mysql);
                 if (cmd.ExecuteNonQuery() != 0)

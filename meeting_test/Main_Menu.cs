@@ -83,6 +83,13 @@ namespace meeting_test
             }
             Point p = new Point(x, 0);
             this.Location = p;
+            splitContainer1.Panel2.Controls.Clear();//清除右侧窗体控件
+            Task_Waitting taskWaitting = new Task_Waitting();
+            taskWaitting.TopLevel = false;
+            taskWaitting.Dock = DockStyle.Fill;
+            taskWaitting.FormBorderStyle = FormBorderStyle.None;
+            splitContainer1.Panel2.Controls.Add(taskWaitting);
+            taskWaitting.Show();
     
         }
 

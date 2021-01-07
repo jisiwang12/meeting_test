@@ -13,7 +13,7 @@ namespace meeting_test.dao
      */
     class My_SqlCon
     {
-        private String sqlStringCon = "server=localhost;uid=gsq;pwd=123;database=My_Test";
+        private String sqlStringCon = "server=10.86.36.96;uid=gsq;pwd=123;database=My_Test";
         
         /**
          * 验证用户

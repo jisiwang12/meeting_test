@@ -24,12 +24,10 @@ namespace meeting_test
 
         private void ChooseUser_Load(object sender, EventArgs e)
         {
-           
             string mysql = "select username as 姓名 from usermanage";
             My_SqlCon mySqlCon = new My_SqlCon();
             var dataSet = mySqlCon.getSqlds(mysql);
             dataGridView1.DataSource = dataSet.Tables[0];
-            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -38,7 +36,6 @@ namespace meeting_test
             if (who==1)
             {
                 Add_Meeting.getAddMeeting().textBox2.Text = name;
-                
                 
             }
 

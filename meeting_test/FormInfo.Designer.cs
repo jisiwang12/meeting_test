@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace meeting_test
 {
@@ -33,14 +34,12 @@ namespace meeting_test
         {
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -48,13 +47,16 @@ namespace meeting_test
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(113, 155);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(390, 21);
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(514, 21);
             this.textBox4.TabIndex = 41;
             // 
             // label8
@@ -65,16 +67,6 @@ namespace meeting_test
             this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 40;
             this.label8.Text = "会议主题";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {"电子线事业部", "声学事业部"});
-            this.comboBox1.Location = new System.Drawing.Point(275, 107);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 39;
             // 
             // label7
             // 
@@ -91,17 +83,19 @@ namespace meeting_test
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 37;
-            this.button4.Text = "取消";
+            this.button4.Text = "返回";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(230, 325);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 36;
+            this.button3.TabIndex = 1;
             this.button3.Text = "提交";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label6
             // 
@@ -129,20 +123,11 @@ namespace meeting_test
             this.label5.TabIndex = 30;
             this.label5.Text = "完成时间";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "yyyy/mm/dd";
-            this.dateTimePicker1.Location = new System.Drawing.Point(482, 56);
-            this.dateTimePicker1.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(142, 21);
-            this.dateTimePicker1.TabIndex = 29;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 1, 2, 9, 6, 21, 0);
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(113, 204);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(514, 106);
             this.richTextBox1.TabIndex = 28;
             this.richTextBox1.Text = "";
@@ -200,21 +185,37 @@ namespace meeting_test
             this.label1.TabIndex = 23;
             this.label1.Text = "会议详情";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(491, 56);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(115, 21);
+            this.textBox5.TabIndex = 42;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(275, 109);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(115, 21);
+            this.textBox6.TabIndex = 43;
+            // 
             // FormInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 367);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -224,14 +225,16 @@ namespace meeting_test
             this.Controls.Add(this.label1);
             this.Name = "FormInfo";
             this.Text = "FormInfo";
+            this.Load += new System.EventHandler(this.FormInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
+        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.TextBox textBox6;
+
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
