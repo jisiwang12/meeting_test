@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -13,12 +14,15 @@ namespace meeting_test
     public partial class Task_Waitting : Form
     {
         private Task task;
+        private My_SqlCon mySqlCon = new My_SqlCon();
 
         public Task_Waitting()
         {
             InitializeComponent();
         }
 
+        
+        
         private void Task_Waitting_Load(object sender, EventArgs e)
         {
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
@@ -26,6 +30,7 @@ namespace meeting_test
             My_SqlCon mySqlCon = new My_SqlCon();
             DataSet ds = mySqlCon.getSqlds(mysql);
             this.dataGridView1.DataSource = ds.Tables[0];
+            this.dataGridView1.RowHeadersVisible = false;
 
             /*for (var i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
@@ -45,7 +50,7 @@ namespace meeting_test
             //不允许添加行
             dataGridView1.AllowUserToAddRows = false;
             //背景为白色
-            dataGridView1.BackgroundColor = Color.White;
+            
             //只允许选中单行
             dataGridView1.MultiSelect = false;
             //整行选中
@@ -54,17 +59,31 @@ namespace meeting_test
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex < 0)
+            for (var i = 0; i < dataGridView1.RowCount; i++)
+            {
+                var dataGridViewRow = dataGridView1.Rows[i];
+                var nowTime = DateTime.Now.ToString("yyMMdd");
+                //MessageBox.Show(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd"));
+                if (int.Parse(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd")) -
+                    int.Parse(DateTime.Now.ToString("yyMMdd")) < 0)
+                {
+                    dataGridViewRow.DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewRow.DefaultCellStyle.SelectionBackColor = Color.Red;
+                    if (dataGridViewRow.Cells["状态"].Value.ToString() != "已超时")
+                    {
+                        
+                        var sqlCommand =
+                            mySqlCon.getCmd(
+                                $"update task set status='已超时' where serial='{dataGridViewRow.Cells["单号"].Value.ToString()}'");
+                        sqlCommand.ExecuteNonQuery();
+                        dataGridViewRow.Cells["状态"].Value = "已超时";
+                    }
+                }
+            }
+            /*if (e.RowIndex < 0)
             {
                 return;
-            }
-
-            var dataGridViewRow = dataGridView1.Rows[3];
-            if (dataGridViewRow.Cells[1].Value.ToString()=="待审核")
-            {
-                dataGridViewRow.DefaultCellStyle.BackColor=Color.Red;
-                // e.CellStyle.BackColor=Color.Red;
-            }
+            }*/
             /*if (dataGridViewRow.Cells["status"].Value.ToString() == "待审核")
             {
                 MessageBox.Show(dataGridViewRow.Cells["status"].Value.ToString());
@@ -120,5 +139,6 @@ namespace meeting_test
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
+        
     }
 }

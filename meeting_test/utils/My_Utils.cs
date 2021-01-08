@@ -23,7 +23,7 @@ namespace meeting_test.utils
                 DirectoryInfo dir = Directory.GetParent(path);
                 string strFileName02 = dir.Parent.Parent.FullName + "\\app.config";
                 doc01.Load(strFileName01);
-                doc02.Load(strFileName02);//'F:\work\Win7FTP\Win7FTP\Win7FTP\bin\Debugapp.config'.
+                doc02.Load(strFileName02);
                 //找出名称为“add”的所有元素  
                 XmlNodeList nodes01 = doc01.GetElementsByTagName("add");
                 XmlNodeList nodes02 = doc02.GetElementsByTagName("add");
