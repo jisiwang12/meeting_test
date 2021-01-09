@@ -45,6 +45,7 @@ namespace meeting_test
             taskWaitting.FormBorderStyle = FormBorderStyle.None;
             splitContainer1.Panel2.Controls.Add(taskWaitting);
             taskWaitting.Show();
+            
         }
 
         /**
@@ -63,12 +64,12 @@ namespace meeting_test
 
         private void label1_Click(object sender, EventArgs e)
         {
+            
         }
 
         private void Main_Menu_Load(object sender, EventArgs e)
         {
             label1.Text = Login.userInfo.Username;
-            this.Size = new Size(650, 300); //重设窗口大小
             int y = Screen.PrimaryScreen.WorkingArea.Width;
             int x = this.Size.Width;
             if (x > y)
@@ -82,6 +83,22 @@ namespace meeting_test
 
             Point p = new Point(x, 10);
             this.Location = p; //设定初始坐标
+            this.showPanel();
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 3600000; //刷新间隔时间
+            
+            if (Login.userInfo.Type.Trim() != "admin")
+            {
+                this.pictureBox1.Visible = false;
+                
+                
+            }
+            
+            
+        }
+
+        public void showPanel()
+        {
             splitContainer1.Panel2.Controls.Clear(); //清除右侧窗体控件
             Task_Waitting taskWaitting = new Task_Waitting();
             taskWaitting.TopLevel = false;
@@ -90,12 +107,10 @@ namespace meeting_test
             this.FormBorderStyle = FormBorderStyle.None;
             this.splitContainer1.SplitterDistance = 1;
             this.splitContainer1.Panel2.Controls.Add(taskWaitting);
-            
             taskWaitting.Show(); //显示任务窗体
             this.splitContainer1.Panel1.Hide();
             this.menuStrip1.Hide();
         }
-
         private void 账号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -126,7 +141,6 @@ namespace meeting_test
                 this.FormBorderStyle = FormBorderStyle.FixedDialog;
                 this.menuStrip1.Visible = true;
                 button_status = 1;
-
             }else if (button_status==1)
             {
                 button_status = 0;
@@ -134,11 +148,12 @@ namespace meeting_test
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.menuStrip1.Hide();
                 this.splitContainer1.SplitterDistance = 2;
-                
             }
             
 
         }
+
+
 
         private void Panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -150,7 +165,7 @@ namespace meeting_test
             if (button_status==0)
             {
                 this.splitContainer1.Panel1.Visible = true;
-                this.splitContainer1.SplitterDistance = 100;
+                this.splitContainer1.SplitterDistance = 98;
                 this.FormBorderStyle = FormBorderStyle.FixedDialog;
                 this.menuStrip1.Visible = true;
                 button_status = 1;
@@ -162,8 +177,53 @@ namespace meeting_test
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.menuStrip1.Hide();
                 this.splitContainer1.SplitterDistance = 2;
-                
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.showPanel();
+            
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2.Controls.Clear(); //清除右侧窗体控件
+            Task_Waitting taskWaitting = new Task_Waitting();
+            taskWaitting.TopLevel = false;
+            taskWaitting.Dock = DockStyle.Fill;
+            taskWaitting.FormBorderStyle = FormBorderStyle.None;
+            splitContainer1.Panel2.Controls.Add(taskWaitting);
+            taskWaitting.Show();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (this.WindowState == FormWindowState.Minimized)//当程序是最小化的状态时显示程序页面
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+                this.Activate();
+                this.Visible = true;
+                this.ShowInTaskbar = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
+
+        private void Main_Menu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
         }
     }
 }

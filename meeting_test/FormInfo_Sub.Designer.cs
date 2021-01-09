@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace meeting_test
 {
-    partial class FormInfo
+    partial class FormInfo_Sub
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@ namespace meeting_test
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,8 +48,8 @@ namespace meeting_test
             this.label1 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox4
@@ -81,23 +80,13 @@ namespace meeting_test
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(381, 325);
+            this.button4.Location = new System.Drawing.Point(300, 316);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 37;
+            this.button4.TabIndex = 1;
             this.button4.Text = "返回";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(230, 325);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "提交";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label6
             // 
@@ -203,37 +192,37 @@ namespace meeting_test
             this.textBox6.Size = new System.Drawing.Size(115, 21);
             this.textBox6.TabIndex = 43;
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(491, 109);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(81, 21);
+            this.textBox7.TabIndex = 45;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(447, 115);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
-            this.label9.TabIndex = 44;
+            this.label9.TabIndex = 46;
             this.label9.Text = "状态";
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(491, 109);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(75, 21);
-            this.textBox7.TabIndex = 45;
-            // 
-            // FormInfo
+            // FormInfo_Sub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 367);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
@@ -244,7 +233,7 @@ namespace meeting_test
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FormInfo";
+            this.Name = "FormInfo_Sub";
             this.Text = "FormInfo";
             this.Load += new System.EventHandler(this.FormInfo_Load);
             this.ResumeLayout(false);
@@ -252,12 +241,12 @@ namespace meeting_test
         }
 
         private System.Windows.Forms.Label label9;
+
         public System.Windows.Forms.TextBox textBox7;
 
         public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox6;
 
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

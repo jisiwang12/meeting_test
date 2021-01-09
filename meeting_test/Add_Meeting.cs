@@ -50,8 +50,6 @@ namespace meeting_test
 
         private void Add_Meeting_Load(object sender, EventArgs e)
         {
-            
-            
             textBox1.Text = Login.userInfo.Username;
             dateTimePicker1.Value=DateTime.Now;
             
@@ -64,9 +62,8 @@ namespace meeting_test
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            
             DateTime dateTime = dateTimePicker1.Value;
-            if (dateTime.CompareTo(DateTime.Now) <0)
+            if (dateTime.AddHours(2).CompareTo(DateTime.Now) <0)
             {
                 dateTimePicker1.Value = DateTime.Now;
                 MessageBox.Show("不能小于当前日期");
@@ -149,7 +146,7 @@ namespace meeting_test
             else
             {
                 var serial = this.getSerial();
-                String status = "待审核";
+                String status = "待处理";
                 
                 //String mysql = "insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject)"+
                               // " values ('"+textBox1.Text+"','"+textBox2.Text+"','"+dateTimePicker1.Value+"','"+textBox3.Text+"','"+richTextBox1.Text+"','"+DateTime.Now+"','"+comboBox1.Text+"','"+serial+"','"+textBox4.Text+"')";

@@ -31,37 +31,67 @@ namespace meeting_test
             textBox6.Text = task.Bu;
             textBox4.Text = task.Subject;
             richTextBox1.Text = task.Content;
+            textBox7.Text = task.Status;
         }
 
         private void FormInfo_Load(object sender, EventArgs e)
         {
             this.init();
-            if (task.Status=="待审核")
+            if (task.Status=="待审核" || task.Status=="退回审核")
             {
                 button3.Text = "确认审核";
-                button4.Text = "退回审核";
+                button4.Text = "退回责任人";
                
-            }else if (task.Status=="待完成")
+            }else if (task.Status=="待处理")
             {
                 button3.Text = "确认完成";
-
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (button4.Text=="返回")
+            {
+                this.Close();
+
+            }else if (button4.Text=="退回责任人")
+            {
+                mysql = $"update task set status='审核退回' where serial='{task.Serial}'";
+                var cmd = mySqlCon.getCmd(mysql: mysql);
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    MessageBox.Show("退回成功");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("服务器正忙，请稍后再试");
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (this.button3.Text=="确认审核")
             {
-                mysql = $"update task set status='待完成' where serial='{task.Serial}'";
+                mysql = $"update task set status='已结案' where serial='{task.Serial}'";
                 var cmd = mySqlCon.getCmd(mysql: mysql);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
-                    MessageBox.Show("审核成功");
+                    MessageBox.Show("提交成功");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("服务器正忙，请稍后再试");
+                }
+            }else if (button3.Text=="确认完成" || button3.Text=="提交")
+            {
+                mysql = $"update task set status='待审核' where serial='{task.Serial}'";
+                var cmd = mySqlCon.getCmd(mysql: mysql);
+                if (cmd.ExecuteNonQuery() != 0)
+                {
+                    MessageBox.Show("提交成功");
                     this.Close();
                 }
                 else

@@ -3,11 +3,13 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using meeting_test.dao;
+using meeting_test.domain;
 
 namespace meeting_test
 {
     public partial class Submitted : Form
     {
+        private Task task;
         public Submitted()
         {
             InitializeComponent();
@@ -15,7 +17,7 @@ namespace meeting_test
 
         private void Submitted_Load(object sender, EventArgs e)
         {
-            String mysql = $"select status as 状态,faqiren as 发起人,subject as 会议主题,shenheren as 审核人,content as 项目内容," 
+            String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
                            + $"time as 完成时间,zherenren as 责任人 from task where faqiren='{Login.userInfo.Username}' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
             DataSet ds = mySqlCon.getSqlds(mysql);
@@ -34,7 +36,35 @@ namespace meeting_test
             //只允许选中单行
             dataGridView1.MultiSelect = false;
             //整行选中
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;                           
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;       
+            this.dataGridView1.RowHeadersVisible = false;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            task = new Task();
+            var mySqlCon = new My_SqlCon();
+            String serial = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'");
+            if (dr.Read())
+            {
+                task.Id = dr[0].ToString();
+                task.Serial = dr[1].ToString();
+                task.Shenheren = dr[2].ToString();
+                task.Time = dr[3].ToString();
+                task.Zherenren = dr[4].ToString();
+                task.Content = dr[5].ToString();
+                task.Gonghao = dr[6].ToString();
+                task.Sqtime = dr[7].ToString();
+                task.Status = dr[8].ToString();
+                task.Bu = dr[9].ToString();
+                task.Faqiren = dr[10].ToString();
+                task.Timeformat = dr[11].ToString();
+                task.Subject = dr[12].ToString();
+            }
+
+            var formInfo_Sub = new FormInfo_Sub(task);
+            formInfo_Sub.ShowDialog();
         }
     }
 }

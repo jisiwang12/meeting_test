@@ -26,7 +26,7 @@ namespace meeting_test
         private void Task_Waitting_Load(object sender, EventArgs e)
         {
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
-                           + $"time as 完成时间,zherenren as 责任人 from task where zherenren='{Login.userInfo.Username}' or shenheren='{Login.userInfo.Username}' order by sqtime desc";
+                           + $"time as 完成时间,zherenren as 责任人 from task where zherenren='{Login.userInfo.Username}' or shenheren='{Login.userInfo.Username}' and status != '已结案' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
             DataSet ds = mySqlCon.getSqlds(mysql);
             this.dataGridView1.DataSource = ds.Tables[0];
@@ -67,7 +67,7 @@ namespace meeting_test
                 if (int.Parse(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd")) -
                     int.Parse(DateTime.Now.ToString("yyMMdd")) < 0)
                 {
-                    dataGridViewRow.DefaultCellStyle.BackColor = Color.Red;
+                    dataGridViewRow.DefaultCellStyle.ForeColor = Color.Red;
                     dataGridViewRow.DefaultCellStyle.SelectionBackColor = Color.Red;
                     if (dataGridViewRow.Cells["状态"].Value.ToString() != "已超时")
                     {

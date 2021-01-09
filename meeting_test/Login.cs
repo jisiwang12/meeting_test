@@ -38,6 +38,7 @@ namespace meeting_test
                 String username = (string)dr[0];
                 userInfo = new UserInfo();
                 userInfo.Username = username;
+                userInfo.Type = (string) dr[2];
                 return true;
             }
 
@@ -61,6 +62,7 @@ namespace meeting_test
                     String username = (string)dr[0];
                     userInfo = new UserInfo();
                     userInfo.Username = username;
+                    userInfo.Type = (string) dr[2];
                     Main_Menu mainMenu = new Main_Menu();
                     this.Hide();
                     mainMenu.ShowDialog();
