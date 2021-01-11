@@ -223,7 +223,14 @@ namespace meeting_test
 
         private void Main_Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
+          
+        }
+
+        private void 注销ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            My_Utils.XMLUtils("islogined", "0");
+            Process.Start(Process.GetCurrentProcess().ProcessName + ".exe");
+            Application.Exit();
         }
     }
 }

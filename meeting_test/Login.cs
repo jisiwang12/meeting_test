@@ -15,6 +15,7 @@ using System.Xml;
 using meeting_test.domain;
 using meeting_test.dao;
 using meeting_test.utils;
+using Microsoft.Win32;
 
 namespace meeting_test
 {
@@ -25,7 +26,9 @@ namespace meeting_test
         public Login()
         {
             InitializeComponent();
+           
             this.Auto_Login();
+            
         }
         public bool Sql(){
           
@@ -45,9 +48,20 @@ namespace meeting_test
             return false;
            
         }
+        //设置开机自启动
+        public  void SetAutoRun()
+        {
+            string path = Application.ExecutablePath;
+            RegistryKey rk = Registry.LocalMachine;
+            RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+            rk2.SetValue("JcShutdown", path);
+            rk2.Close();
+            rk.Close();
+        }
 
         public void Auto_Login()
         {
+            
             string usernameConfig = WebConfigurationManager.AppSettings["username"];
             string islogined = WebConfigurationManager.AppSettings["islogined"];
             string passwd = WebConfigurationManager.AppSettings["passwd"];

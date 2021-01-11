@@ -1,7 +1,6 @@
 C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.exe.config
 C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.exe
 C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.pdb
-C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csprojAssemblyReference.cache
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Login.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Properties.Resources.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csproj.GenerateResource.cache
@@ -16,3 +15,9 @@ C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Sub
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.FormInfo.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Test.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.FormInfo_Sub.resources
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.csprojAssemblyReference.cache
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.TrustInfo.xml
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.exe.manifest
+C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.exe.manifest
+C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\meeting_test.application
+C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.application

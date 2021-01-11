@@ -21,9 +21,9 @@ namespace meeting_test.utils
                 string  strFileName01 = AppDomain.CurrentDomain.BaseDirectory + Process.GetCurrentProcess().ProcessName + ".exe.config";
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 DirectoryInfo dir = Directory.GetParent(path);
-                string strFileName02 = dir.Parent.Parent.FullName + "\\app.config";
+            
                 doc01.Load(strFileName01);
-                doc02.Load(strFileName02);
+                
                 //找出名称为“add”的所有元素  
                 XmlNodeList nodes01 = doc01.GetElementsByTagName("add");
                 XmlNodeList nodes02 = doc02.GetElementsByTagName("add");
@@ -56,7 +56,7 @@ namespace meeting_test.utils
 
                 //保存上面的修改  
                 doc01.Save(strFileName01);
-                doc01.Save(strFileName02);
+                
                 
         }
     }

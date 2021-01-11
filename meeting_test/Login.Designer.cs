@@ -30,6 +30,7 @@ namespace meeting_test
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.button_Login = new System.Windows.Forms.Button();
             this.label_Meetting = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@ namespace meeting_test
             // label_Meetting
             // 
             this.label_Meetting.AutoSize = true;
-            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_Meetting.Location = new System.Drawing.Point(244, 30);
             this.label_Meetting.Name = "label_Meetting";
             this.label_Meetting.Size = new System.Drawing.Size(159, 35);
@@ -105,6 +106,7 @@ namespace meeting_test
             this.AcceptButton = this.button_Login;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(674, 350);
             this.Controls.Add(this.textBox_Passwd);
             this.Controls.Add(this.textBox_UserName);
@@ -112,11 +114,13 @@ namespace meeting_test
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_Meetting);
             this.Controls.Add(this.button_Login);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
-            this.Text = "Form1";
+            this.Text = "登录";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
