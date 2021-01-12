@@ -26,7 +26,14 @@ namespace meeting_test
         public Login()
         {
             InitializeComponent();
-           
+            var autorunString = WebConfigurationManager.AppSettings["setautorun"];
+            if (autorunString == "0")
+            {
+                this.SetAutoRun();
+                My_Utils.XMLUtils("setautorun", "1");
+                
+            }
+
             this.Auto_Login();
             
         }
@@ -44,7 +51,7 @@ namespace meeting_test
                 userInfo.Type = (string) dr[2];
                 return true;
             }
-
+            dr.Close();
             return false;
            
         }
@@ -52,9 +59,9 @@ namespace meeting_test
         public  void SetAutoRun()
         {
             string path = Application.ExecutablePath;
-            RegistryKey rk = Registry.LocalMachine;
-            RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
-            rk2.SetValue("JcShutdown", path);
+            RegistryKey rk = Registry.CurrentUser;
+            RegistryKey rk2 = rk.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+            rk2.SetValue("Meeting", path);
             rk2.Close();
             rk.Close();
         }
@@ -80,6 +87,7 @@ namespace meeting_test
                     Main_Menu mainMenu = new Main_Menu();
                     this.Hide();
                     mainMenu.ShowDialog();
+                    dr.Close();
                     this.Close();
                 }
             }
@@ -99,7 +107,7 @@ namespace meeting_test
                 
             }
             */
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -9,7 +9,6 @@
     </add>
     <add key="islogined" value="">
     </add>
-    <add key="setautorun" value="0"></add>
     <add key="ClientSettingsProvider.ServiceUri" value="" />
   </appSettings>
   <startup>

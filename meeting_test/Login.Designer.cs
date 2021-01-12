@@ -42,7 +42,7 @@ namespace meeting_test
             // 
             // button_Login
             // 
-            this.button_Login.Location = new System.Drawing.Point(281, 235);
+            this.button_Login.Location = new System.Drawing.Point(97, 240);
             this.button_Login.Name = "button_Login";
             this.button_Login.Size = new System.Drawing.Size(75, 23);
             this.button_Login.TabIndex = 2;
@@ -53,8 +53,8 @@ namespace meeting_test
             // label_Meetting
             // 
             this.label_Meetting.AutoSize = true;
-            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Meetting.Location = new System.Drawing.Point(244, 30);
+            this.label_Meetting.Font = new System.Drawing.Font("宋体", 26.25F, ((System.Drawing.FontStyle) ((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte) (134)));
+            this.label_Meetting.Location = new System.Drawing.Point(60, 35);
             this.label_Meetting.Name = "label_Meetting";
             this.label_Meetting.Size = new System.Drawing.Size(159, 35);
             this.label_Meetting.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace meeting_test
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 112);
+            this.label1.Location = new System.Drawing.Point(24, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace meeting_test
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(220, 165);
+            this.label2.Location = new System.Drawing.Point(36, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 3;
@@ -83,14 +83,14 @@ namespace meeting_test
             // 
             // textBox_UserName
             // 
-            this.textBox_UserName.Location = new System.Drawing.Point(272, 109);
+            this.textBox_UserName.Location = new System.Drawing.Point(88, 114);
             this.textBox_UserName.Name = "textBox_UserName";
             this.textBox_UserName.Size = new System.Drawing.Size(159, 21);
             this.textBox_UserName.TabIndex = 0;
             // 
             // textBox_Passwd
             // 
-            this.textBox_Passwd.Location = new System.Drawing.Point(272, 162);
+            this.textBox_Passwd.Location = new System.Drawing.Point(88, 167);
             this.textBox_Passwd.Name = "textBox_Passwd";
             this.textBox_Passwd.Size = new System.Drawing.Size(159, 21);
             this.textBox_Passwd.TabIndex = 1;
@@ -107,20 +107,19 @@ namespace meeting_test
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(674, 350);
+            this.ClientSize = new System.Drawing.Size(291, 350);
             this.Controls.Add(this.textBox_Passwd);
             this.Controls.Add(this.textBox_UserName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_Meetting);
             this.Controls.Add(this.button_Login);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "登录";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;

@@ -64,6 +64,7 @@ namespace meeting_test
             }
 
             var formInfo_Sub = new FormInfo_Sub(task);
+            dr.Close();
             formInfo_Sub.ShowDialog();
         }
     }

@@ -19,11 +19,12 @@ namespace meeting_test
     public partial class Main_Menu : Form
     {
         private int button_status = 0;
+
         public Main_Menu()
         {
             InitializeComponent();
         }
-        
+
         /**
          * 新建会议
          */
@@ -45,7 +46,6 @@ namespace meeting_test
             taskWaitting.FormBorderStyle = FormBorderStyle.None;
             splitContainer1.Panel2.Controls.Add(taskWaitting);
             taskWaitting.Show();
-            
         }
 
         /**
@@ -64,11 +64,11 @@ namespace meeting_test
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void Main_Menu_Load(object sender, EventArgs e)
         {
+            
             label1.Text = Login.userInfo.Username;
             int y = Screen.PrimaryScreen.WorkingArea.Width;
             int x = this.Size.Width;
@@ -86,15 +86,11 @@ namespace meeting_test
             this.showPanel();
             this.timer1.Enabled = true;
             this.timer1.Interval = 3600000; //刷新间隔时间
-            
+
             if (Login.userInfo.Type.Trim() != "admin")
             {
                 this.pictureBox1.Visible = false;
-                
-                
             }
-            
-            
         }
 
         public void showPanel()
@@ -111,9 +107,9 @@ namespace meeting_test
             this.splitContainer1.Panel1.Hide();
             this.menuStrip1.Hide();
         }
+
         private void 账号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
         }
 
         /**
@@ -129,19 +125,19 @@ namespace meeting_test
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
         }
-        
-        
+
+
         private void button3_Click(object sender, EventArgs e)
         {
-            
-            if (button_status==0)
+            if (button_status == 0)
             {
                 this.splitContainer1.Panel1.Visible = true;
                 this.splitContainer1.SplitterDistance = 100;
                 this.FormBorderStyle = FormBorderStyle.FixedDialog;
                 this.menuStrip1.Visible = true;
                 button_status = 1;
-            }else if (button_status==1)
+            }
+            else if (button_status == 1)
             {
                 button_status = 0;
                 this.splitContainer1.Panel1.Visible = false;
@@ -149,28 +145,24 @@ namespace meeting_test
                 this.menuStrip1.Hide();
                 this.splitContainer1.SplitterDistance = 2;
             }
-            
-
         }
-
 
 
         private void Panel2_Paint(object sender, PaintEventArgs e)
         {
-            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (button_status==0)
+            if (button_status == 0)
             {
                 this.splitContainer1.Panel1.Visible = true;
                 this.splitContainer1.SplitterDistance = 98;
                 this.FormBorderStyle = FormBorderStyle.FixedDialog;
                 this.menuStrip1.Visible = true;
                 button_status = 1;
-
-            }else if (button_status==1)
+            }
+            else if (button_status == 1)
             {
                 button_status = 0;
                 this.splitContainer1.Panel1.Visible = false;
@@ -183,7 +175,6 @@ namespace meeting_test
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.showPanel();
-            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -199,20 +190,8 @@ namespace meeting_test
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            try
-            {
-                if (this.WindowState == FormWindowState.Minimized)//当程序是最小化的状态时显示程序页面
-                {
-                    this.WindowState = FormWindowState.Normal;
-                }
-                this.Activate();
-                this.Visible = true;
-                this.ShowInTaskbar = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            MessageBox.Show(this.WindowState.ToString());
+            this.Visible = false;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -223,7 +202,8 @@ namespace meeting_test
 
         private void Main_Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
-          
+            
+            
         }
 
         private void 注销ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -231,6 +211,14 @@ namespace meeting_test
             My_Utils.XMLUtils("islogined", "0");
             Process.Start(Process.GetCurrentProcess().ProcessName + ".exe");
             Application.Exit();
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
         }
     }
 }

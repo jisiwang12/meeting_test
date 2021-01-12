@@ -16,8 +16,8 @@ namespace meeting_test
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
-            
+            Login login = new Login();
+            Application.Run(login);
         }
     }
 }

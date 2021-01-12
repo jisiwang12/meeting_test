@@ -55,6 +55,7 @@ namespace meeting_test
             dataGridView1.MultiSelect = false;
             //整行选中
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -77,6 +78,7 @@ namespace meeting_test
                                 $"update task set status='已超时' where serial='{dataGridViewRow.Cells["单号"].Value.ToString()}'");
                         sqlCommand.ExecuteNonQuery();
                         dataGridViewRow.Cells["状态"].Value = "已超时";
+                        
                     }
                 }
             }
