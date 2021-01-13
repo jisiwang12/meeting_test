@@ -31,31 +31,24 @@ namespace meeting_test
             DataSet ds = mySqlCon.getSqlds(mysql);
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.RowHeadersVisible = false;
-
-            /*for (var i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                if (ds.Tables[0].Rows[i]["状态"].ToString().Equals("待审核"))
-                {
-                    dataGridView1.Rows[0].DefaultCellStyle.BackColor = Color.Aqua;
-                   
-                }
-            }*/
-            /*//设置数据表格上显示的列标题
-            dataGridView1.Columns[0].HeaderText = "编号";
-            dataGridView1.Columns[1].HeaderText = "课程名称";
-            dataGridView1.Columns[2].HeaderText = "学分";
-            dataGridView1.Columns[3].HeaderText = "备注";*/
             //设置数据表格为只读
             dataGridView1.ReadOnly = true;
             //不允许添加行
             dataGridView1.AllowUserToAddRows = false;
             //背景为白色
-            
+            //不允许拖动行
+            dataGridView1.AllowUserToResizeColumns = false;   
+ 
+ 
+            dataGridView1.AllowUserToResizeRows = false;   
+ 
+// 禁止用户改变列头的高度   
+ 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             //只允许选中单行
             dataGridView1.MultiSelect = false;
             //整行选中
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

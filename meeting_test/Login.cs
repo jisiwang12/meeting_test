@@ -40,7 +40,7 @@ namespace meeting_test
         public bool Sql(){
           
             My_SqlCon sqlCon = new My_SqlCon();
-            SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where username='" + textBox_UserName.Text +
+            SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where gh='" + textBox_UserName.Text +
                                                    "'and passwd='" + textBox_Passwd.Text + "'");
 
             if (dr.Read())
@@ -75,7 +75,7 @@ namespace meeting_test
             if (islogined == "1")
             {
                 My_SqlCon sqlCon = new My_SqlCon();
-                SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where username='" + usernameConfig +
+                SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where gh='" + usernameConfig +
                                                          "'and passwd='" + passwd + "'");
 
                 if (dr.Read())

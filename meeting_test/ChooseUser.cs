@@ -24,7 +24,7 @@ namespace meeting_test
 
         private void ChooseUser_Load(object sender, EventArgs e)
         {
-            string mysql = "select username as 姓名 from usermanage";
+            string mysql = "select username as 姓名 ,gh as 工号 from usermanage";
             My_SqlCon mySqlCon = new My_SqlCon();
             var dataSet = mySqlCon.getSqlds(mysql);
             dataGridView1.DataSource = dataSet.Tables[0];
@@ -49,7 +49,36 @@ namespace meeting_test
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var mySqlCon = new My_SqlCon();
             
+            
+            if (string.IsNullOrEmpty(textBox1.Text)&&String.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("请输入查询内容");
+                
+            }
+            //搜索姓名
+            if (!String.IsNullOrEmpty(textBox1.Text)&&string.IsNullOrEmpty(textBox2.Text))
+            {
+                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username='{textBox1.Text}'");
+                dataGridView1.DataSource = dataSet.Tables[0];
+                
+                
+            }
+            //搜索工号
+            if (!string.IsNullOrEmpty(textBox2.Text)&&string.IsNullOrEmpty(textBox1.Text))
+            {
+                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where gh='{textBox2.Text}'");
+                dataGridView1.DataSource = dataSet.Tables[0];
+            }
+
+            if (!string.IsNullOrEmpty(textBox1.Text)&&!String.IsNullOrEmpty(textBox2.Text))
+            {
+                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username='{textBox1.Text}' and gh='{textBox2.Text}'");
+                dataGridView1.DataSource = dataSet.Tables[0];
+            }
+
+          
         }
     }
 }

@@ -110,6 +110,7 @@ namespace meeting_test
 
         private void 账号ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
         }
 
         /**
@@ -124,6 +125,7 @@ namespace meeting_test
 
         private void Panel1_Paint(object sender, PaintEventArgs e)
         {
+            
         }
 
 
@@ -190,8 +192,8 @@ namespace meeting_test
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(this.WindowState.ToString());
-            this.Visible = false;
+            MessageBox.Show("窗体已显示");
+          
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -209,6 +211,8 @@ namespace meeting_test
         private void 注销ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             My_Utils.XMLUtils("islogined", "0");
+            
+            
             Process.Start(Process.GetCurrentProcess().ProcessName + ".exe");
             Application.Exit();
         }

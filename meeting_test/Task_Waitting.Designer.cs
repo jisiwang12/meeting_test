@@ -66,6 +66,7 @@ namespace meeting_test
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(616, 178);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Task_Waitting";
             this.Text = "Task_Waitting";
             this.Load += new System.EventHandler(this.Task_Waitting_Load);
