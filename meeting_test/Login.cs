@@ -10,7 +10,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
+using System.Threading;
 using System.Web.Configuration;
+using System.Web.Hosting;
 using System.Xml;
 using meeting_test.domain;
 using meeting_test.dao;
@@ -21,8 +23,7 @@ namespace meeting_test
 {
     public partial class Login : Form
     {
-        public static UserInfo userInfo = null;
-        
+
         public Login()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace meeting_test
             {
                 this.SetAutoRun();
                 My_Utils.XMLUtils("setautorun", "1");
-                
             }
 
             this.Auto_Login();
@@ -46,9 +46,9 @@ namespace meeting_test
             if (dr.Read())
             {
                 String username = (string)dr[0];
-                userInfo = new UserInfo();
-                userInfo.Username = username;
-                userInfo.Type = (string) dr[2];
+                Main_Menu.userInfo = new UserInfo();
+                Main_Menu.userInfo.Username = username;
+                Main_Menu.userInfo.Type = (string) dr[2];
                 return true;
             }
             dr.Close();
@@ -68,7 +68,6 @@ namespace meeting_test
 
         public void Auto_Login()
         {
-            
             string usernameConfig = WebConfigurationManager.AppSettings["username"];
             string islogined = WebConfigurationManager.AppSettings["islogined"];
             string passwd = WebConfigurationManager.AppSettings["passwd"];
@@ -77,18 +76,22 @@ namespace meeting_test
                 My_SqlCon sqlCon = new My_SqlCon();
                 SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where gh='" + usernameConfig +
                                                          "'and passwd='" + passwd + "'");
-
                 if (dr.Read())
                 {
                     String username = (string)dr[0];
-                    userInfo = new UserInfo();
-                    userInfo.Username = username;
-                    userInfo.Type = (string) dr[2];
-                    Main_Menu mainMenu = new Main_Menu();
-                    this.Hide();
-                    mainMenu.ShowDialog();
+                    Main_Menu.userInfo = new UserInfo();
+                    Main_Menu.userInfo.Username = username;
+                    Main_Menu.userInfo.Type = (string) dr[2];
                     dr.Close();
-                    this.Close();
+                    var thread1 = new Thread(this.openForm);
+                    thread1.Start();
+                    var currentThreadName = Thread.CurrentThread.Name;
+                    MessageBox.Show(currentThreadName);
+                    
+
+                    /*Main_Menu mainMenu = new Main_Menu();
+                    mainMenu.ShowDialog();*/
+                    //this.Visible = false;
                 }
             }
         }
@@ -118,9 +121,10 @@ namespace meeting_test
                 My_Utils.XMLUtils("username",textBox_UserName.Text.Trim());
                 My_Utils.XMLUtils("passwd",textBox_Passwd.Text.Trim());
                 My_Utils.XMLUtils("islogined","1");
-                Main_Menu mainMenu = new Main_Menu();
-                this.Hide();
-                mainMenu.ShowDialog();
+                /*Main_Menu mainMenu = new Main_Menu();
+                mainMenu.ShowDialog();*/
+                var thread = new Thread(this.openForm);
+                thread.Start();
                 this.Close();
             }
             else
@@ -138,6 +142,17 @@ namespace meeting_test
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            //base.OnClosed(e);
+          
+        }
+        
+        private void openForm()
+        {
+            Application.Run(new Main_Menu());
         }
     }
 }

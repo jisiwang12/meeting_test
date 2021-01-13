@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using meeting_test.domain;
 using meeting_test.utils;
 
 namespace meeting_test
@@ -19,7 +20,7 @@ namespace meeting_test
     public partial class Main_Menu : Form
     {
         private int button_status = 0;
-
+        public static UserInfo userInfo = null;
         public Main_Menu()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace meeting_test
         private void 新建会议ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Add_Meeting add_Meeting = Add_Meeting.getAddMeeting();
-            add_Meeting.ShowDialog();
+            add_Meeting.ShowDialog(); 
         }
 
         /**
@@ -69,7 +70,7 @@ namespace meeting_test
         private void Main_Menu_Load(object sender, EventArgs e)
         {
             
-            label1.Text = Login.userInfo.Username;
+            label1.Text = userInfo.Username;
             int y = Screen.PrimaryScreen.WorkingArea.Width;
             int x = this.Size.Width;
             if (x > y)
@@ -84,10 +85,7 @@ namespace meeting_test
             Point p = new Point(x, 10);
             this.Location = p; //设定初始坐标
             this.showPanel();
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 3600000; //刷新间隔时间
-
-            if (Login.userInfo.Type.Trim() != "admin")
+            if (userInfo.Type.Trim() != "admin")
             {
                 this.pictureBox1.Visible = false;
             }
@@ -192,14 +190,19 @@ namespace meeting_test
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show("窗体已显示");
-          
+            if (this.Visible)
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Visible = true;
+            }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            this.Close();
+            Application.Exit();
         }
 
         private void Main_Menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -211,8 +214,6 @@ namespace meeting_test
         private void 注销ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             My_Utils.XMLUtils("islogined", "0");
-            
-            
             Process.Start(Process.GetCurrentProcess().ProcessName + ".exe");
             Application.Exit();
         }

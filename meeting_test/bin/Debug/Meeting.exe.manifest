@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FjmZQ2k7iZxCdI1KHYyO7IB1ql+pqXV3+wTfjyIoed0=</dsig:DigestValue>
+        <dsig:DigestValue>VRQeIUmMW87ChRByBl54mOIxkJDlkunUwevy5kM4X6o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,13 +62,13 @@
       <dsig:DigestValue>NgPSk7JQMuKg3/EpndwdqeE2w0/250e5QPfHcxPJMf8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Meeting.exe.config" size="1281">
+  <file name="Meeting.exe.config" size="1282">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>0nrtltEOKMdxHsfHfhGfSfMv7TWCflVYiFxZuCu6yKk=</dsig:DigestValue>
+      <dsig:DigestValue>aBHUArSNtPVv90KPTFa5VaSnjWKZn+CNb2Q5dvp6Rt8=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

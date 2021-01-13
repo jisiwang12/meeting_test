@@ -50,7 +50,7 @@ namespace meeting_test
 
         private void Add_Meeting_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Login.userInfo.Username;
+            textBox1.Text = Main_Menu.userInfo.Username;
             dateTimePicker1.Value=DateTime.Now;
             
         }

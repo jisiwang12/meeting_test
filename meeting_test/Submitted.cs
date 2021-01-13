@@ -18,7 +18,7 @@ namespace meeting_test
         private void Submitted_Load(object sender, EventArgs e)
         {
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
-                           + $"time as 完成时间,zherenren as 责任人 from task where faqiren='{Login.userInfo.Username}' order by sqtime desc";
+                           + $"time as 完成时间,zherenren as 责任人 from task where faqiren='{Main_Menu.userInfo.Username}' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
             DataSet ds = mySqlCon.getSqlds(mysql);
             dataGridView1.DataSource = ds.Tables[0];
