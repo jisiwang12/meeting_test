@@ -182,20 +182,20 @@ namespace meeting_test
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.注销ToolStripMenuItem1, this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // 注销ToolStripMenuItem1
             // 
             this.注销ToolStripMenuItem1.Name = "注销ToolStripMenuItem1";
-            this.注销ToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
-            this.注销ToolStripMenuItem1.Text = "注销";
+            this.注销ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.注销ToolStripMenuItem1.Text = "退出账号";
             this.注销ToolStripMenuItem1.Click += new System.EventHandler(this.注销ToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
-            this.toolStripMenuItem1.Text = "退出";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "退出程序";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Main_Menu

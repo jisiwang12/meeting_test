@@ -33,7 +33,6 @@ namespace meeting_test
                 this.SetAutoRun();
                 My_Utils.XMLUtils("setautorun", "1");
             }
-
             this.Auto_Login();
             
         }
@@ -85,31 +84,12 @@ namespace meeting_test
                     dr.Close();
                     var thread1 = new Thread(this.openForm);
                     thread1.Start();
-                    var currentThreadName = Thread.CurrentThread.Name;
-                    MessageBox.Show(currentThreadName);
-                    
-
-                    /*Main_Menu mainMenu = new Main_Menu();
-                    mainMenu.ShowDialog();*/
-                    //this.Visible = false;
+                  
                 }
             }
         }
         private void Login_Load(object sender, EventArgs e)
         {
-            /*
-            My_SqlCon sqlCon = new My_SqlCon();
-            SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where username='" + textBox_UserName.Text +
-                                                     "'and passwd='" + textBox_Passwd.Text + "'");
-
-            if (dr.Read())
-            {
-                String username = (string)dr[0];
-                userInfo = new UserInfo();
-                userInfo.Username = username;
-                
-            }
-            */
             
         }
 
@@ -131,7 +111,6 @@ namespace meeting_test
             {
                 MessageBox.Show("用户名或密码错误");
             }
-           
         }
 
         private void label_Meetting_Click(object sender, EventArgs e)
@@ -153,6 +132,16 @@ namespace meeting_test
         private void openForm()
         {
             Application.Run(new Main_Menu());
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            var islogined = WebConfigurationManager.AppSettings["islogined"];
+            if (islogined=="1")
+            {
+                this.Close();
+            }
         }
     }
 }
