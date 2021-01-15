@@ -73,6 +73,7 @@ namespace meeting_test
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox1.Location = new System.Drawing.Point(98, 46);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -92,6 +93,7 @@ namespace meeting_test
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox2.Location = new System.Drawing.Point(260, 46);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -138,6 +140,7 @@ namespace meeting_test
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox3.Location = new System.Drawing.Point(98, 96);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -205,6 +208,7 @@ namespace meeting_test
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {"电子线事业部", "声学事业部"});
@@ -235,6 +239,7 @@ namespace meeting_test
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(651, 350);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label8);

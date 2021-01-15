@@ -37,13 +37,9 @@ namespace meeting_test
             dataGridView1.AllowUserToAddRows = false;
             //背景为白色
             //不允许拖动行
-            dataGridView1.AllowUserToResizeColumns = false;   
- 
- 
-            dataGridView1.AllowUserToResizeRows = false;   
- 
-// 禁止用户改变列头的高度   
- 
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            // 禁止用户改变列头的高度   
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             //只允许选中单行
             dataGridView1.MultiSelect = false;
@@ -57,7 +53,6 @@ namespace meeting_test
             {
                 var dataGridViewRow = dataGridView1.Rows[i];
                 var nowTime = DateTime.Now.ToString("yyMMdd");
-                //MessageBox.Show(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd"));
                 if (int.Parse(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd")) -
                     int.Parse(DateTime.Now.ToString("yyMMdd")) < 0)
                 {
@@ -65,70 +60,50 @@ namespace meeting_test
                     dataGridViewRow.DefaultCellStyle.SelectionBackColor = Color.Red;
                     if (dataGridViewRow.Cells["状态"].Value.ToString() != "已超时")
                     {
-                        
                         var sqlCommand =
                             mySqlCon.getCmd(
                                 $"update task set status='已超时' where serial='{dataGridViewRow.Cells["单号"].Value.ToString()}'");
                         sqlCommand.ExecuteNonQuery();
                         dataGridViewRow.Cells["状态"].Value = "已超时";
-                        
                     }
                 }
             }
-            /*if (e.RowIndex < 0)
-            {
-                return;
-            }*/
-            /*if (dataGridViewRow.Cells["status"].Value.ToString() == "待审核")
-            {
-                MessageBox.Show(dataGridViewRow.Cells["status"].Value.ToString());
-                e.CellStyle.BackColor = Color.Red;
-            }
-            else
-            {
-                
-            }*/
-
-            /*
-            MessageBox.Show("dka");
-            String status = this.dataGridView1.Rows[e.RowIndex].Cells["status"].Value.ToString();
-            if (status =="待审核")
-            {
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-            }
-            else if(status=="待完成")
-            {
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Brown;
-            }
-            */
+  
         }
 
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            task = new Task();
-            var mySqlCon = new My_SqlCon();
-            String serial = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'");
-            if (dr.Read())
+            try
             {
-                task.Id = dr[0].ToString();
-                task.Serial = dr[1].ToString();
-                task.Shenheren = dr[2].ToString();
-                task.Time = dr[3].ToString();
-                task.Zherenren = dr[4].ToString();
-                task.Content = dr[5].ToString();
-                task.Gonghao = dr[6].ToString();
-                task.Sqtime = dr[7].ToString();
-                task.Status = dr[8].ToString();
-                task.Bu = dr[9].ToString();
-                task.Faqiren = dr[10].ToString();
-                task.Timeformat = dr[11].ToString();
-                task.Subject = dr[12].ToString();
-            }
+                task = new Task();
+                var mySqlCon = new My_SqlCon();
+                String serial = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'");
+                if (dr.Read())
+                {
+                    task.Id = dr[0].ToString();
+                    task.Serial = dr[1].ToString();
+                    task.Shenheren = dr[2].ToString();
+                    task.Time = dr[3].ToString();
+                    task.Zherenren = dr[4].ToString();
+                    task.Content = dr[5].ToString();
+                    task.Gonghao = dr[6].ToString();
+                    task.Sqtime = dr[7].ToString();
+                    task.Status = dr[8].ToString();
+                    task.Bu = dr[9].ToString();
+                    task.Faqiren = dr[10].ToString();
+                    task.Timeformat = dr[11].ToString();
+                    task.Subject = dr[12].ToString();
+                }
 
-            var formInfo = new FormInfo(task);
-            formInfo.ShowDialog();
+                var formInfo = new FormInfo(task);
+                formInfo.ShowDialog();
+            }
+            catch (Exception exception)
+            {
+            }
+          
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

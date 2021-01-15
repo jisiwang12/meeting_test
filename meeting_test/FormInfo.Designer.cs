@@ -55,6 +55,7 @@ namespace meeting_test
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox4.Location = new System.Drawing.Point(113, 155);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -91,6 +92,7 @@ namespace meeting_test
             // 
             // button3
             // 
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button3.Location = new System.Drawing.Point(230, 325);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
@@ -110,6 +112,7 @@ namespace meeting_test
             // 
             // textBox3
             // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox3.Location = new System.Drawing.Point(113, 106);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -127,6 +130,7 @@ namespace meeting_test
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.Location = new System.Drawing.Point(113, 204);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -145,6 +149,7 @@ namespace meeting_test
             // 
             // textBox2
             // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox2.Location = new System.Drawing.Point(275, 56);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -162,6 +167,7 @@ namespace meeting_test
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox1.Location = new System.Drawing.Point(113, 56);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -189,6 +195,7 @@ namespace meeting_test
             // 
             // textBox5
             // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox5.Location = new System.Drawing.Point(491, 56);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
@@ -197,6 +204,7 @@ namespace meeting_test
             // 
             // textBox6
             // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox6.Location = new System.Drawing.Point(275, 109);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
@@ -214,6 +222,8 @@ namespace meeting_test
             // 
             // textBox7
             // 
+            this.textBox7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox7.Location = new System.Drawing.Point(491, 109);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
@@ -224,6 +234,7 @@ namespace meeting_test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(676, 367);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label9);
@@ -244,8 +255,9 @@ namespace meeting_test
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FormInfo";
-            this.Text = "FormInfo";
+            this.Text = "会议详情";
             this.Load += new System.EventHandler(this.FormInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

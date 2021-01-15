@@ -29,7 +29,6 @@ namespace meeting_test
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.button_Login = new System.Windows.Forms.Button();
             this.label_Meetting = new System.Windows.Forms.Label();
@@ -37,12 +36,13 @@ namespace meeting_test
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_UserName = new System.Windows.Forms.TextBox();
             this.textBox_Passwd = new System.Windows.Forms.TextBox();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Login
             // 
-            this.button_Login.Location = new System.Drawing.Point(97, 240);
+            this.button_Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Login.Location = new System.Drawing.Point(107, 229);
             this.button_Login.Name = "button_Login";
             this.button_Login.Size = new System.Drawing.Size(75, 23);
             this.button_Login.TabIndex = 2;
@@ -96,10 +96,16 @@ namespace meeting_test
             this.textBox_Passwd.TabIndex = 1;
             this.textBox_Passwd.UseSystemPasswordChar = true;
             // 
-            // notifyIcon1
+            // button1
             // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(107, 270);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "退出";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Login
             // 
@@ -108,12 +114,14 @@ namespace meeting_test
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(291, 350);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox_Passwd);
             this.Controls.Add(this.textBox_UserName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_Meetting);
             this.Controls.Add(this.button_Login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Text = "登录";
@@ -122,7 +130,7 @@ namespace meeting_test
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button button1;
 
         #endregion
 

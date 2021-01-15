@@ -3,14 +3,13 @@
   <configSections>
   </configSections>
   <appSettings>
-    <add key="username" value="root">
+    <add key="username" value="">
     </add>
-    <add key="passwd" value="123">
+    <add key="passwd" value="">
     </add>
     <add key="islogined" value="0">
     </add>
-    <add key="setautorun" value="1">
-    </add>
+    <add key="setautorun" value="0"></add>
     <add key="ClientSettingsProvider.ServiceUri" value="" />
   </appSettings>
   <startup>

@@ -110,6 +110,8 @@ namespace meeting_test
             else
             {
                 MessageBox.Show("用户名或密码错误");
+                textBox_UserName.Clear();
+                textBox_Passwd.Clear();
             }
         }
 
@@ -142,6 +144,12 @@ namespace meeting_test
             {
                 this.Close();
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
         }
     }
 }

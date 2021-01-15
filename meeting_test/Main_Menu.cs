@@ -65,17 +65,22 @@ namespace meeting_test
 
         private void label1_Click(object sender, EventArgs e)
         {
+            
         }
-        private void Form1_Load(object sender, EventArgs e)
-        { Rectangle ScreenArea = Screen.GetBounds(this); 
-            int width = Convert.ToInt32(ScreenArea.Width * 0.7);
-            int height = Convert.ToInt32(ScreenArea.Height * 0.1); 
-            //MessageBox.Show(width.ToString() ";" height.ToString());
-            //this.Location = new Point(width, height);
-            ////SetToDeskTop(); SetParent(this.Handle.ToInt32(), FindWindowW("Progman", null)); } //API [DllImport("user32.dll", EntryPoint = "SetParent")] public static extern int SetParent(int hWndChild, int hWndNewParent); [DllImport("user32.dll", EntryPoint = "FindWindowW")] public static extern int FindWindowW(string lpClassName, string lpWindowName);
+        
+        //API
+
+        [DllImport("user32.dll", EntryPoint = "SetParent")]
+
+        public static extern int SetParent(int hWndChild, int hWndNewParent);
+
+        [DllImport("user32.dll", EntryPoint = "FindWindowW")]
+
+        public static extern int FindWindowW(string lpClassName, string lpWindowName);
+        
         private void Main_Menu_Load(object sender, EventArgs e)
         {
-            
+            SetParent(this.Handle.ToInt32(), FindWindowW("Progman", null));
             label1.Text = userInfo.Username;
             int y = Screen.PrimaryScreen.WorkingArea.Width;
             int x = this.Size.Width;
@@ -96,7 +101,8 @@ namespace meeting_test
                 this.pictureBox1.Visible = false;
             }
         }
-
+        
+        
         public void showPanel()
         {
             splitContainer1.Panel2.Controls.Clear(); //清除右侧窗体控件
@@ -196,13 +202,16 @@ namespace meeting_test
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            
             if (this.Visible)
             {
                 this.Hide();
+                this.ShowInTaskbar = true;
             }
             else
             {
                 this.Visible = true;
+                this.ShowInTaskbar = false;
             }
         }
 

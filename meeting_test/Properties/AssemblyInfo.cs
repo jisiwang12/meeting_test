@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("meeting_test")]
+[assembly: AssemblyTitle("Meeting")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("微软中国")]
-[assembly: AssemblyProduct("meeting_test")]
+[assembly: AssemblyProduct("Meeting")]
 [assembly: AssemblyCopyright("Copyright © 龚识权 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
