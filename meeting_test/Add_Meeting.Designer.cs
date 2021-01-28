@@ -263,6 +263,7 @@ namespace meeting_test
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Add_Meeting";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Add_Meeting_FormClosed);
             this.Load += new System.EventHandler(this.Add_Meeting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

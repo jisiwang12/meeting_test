@@ -46,10 +46,13 @@ namespace meeting_test
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox4
@@ -57,7 +60,6 @@ namespace meeting_test
             this.textBox4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBox4.Location = new System.Drawing.Point(113, 155);
             this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(514, 21);
             this.textBox4.TabIndex = 41;
             // 
@@ -73,7 +75,7 @@ namespace meeting_test
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(230, 115);
+            this.label7.Location = new System.Drawing.Point(269, 109);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 38;
@@ -81,7 +83,7 @@ namespace meeting_test
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(300, 316);
+            this.button4.Location = new System.Drawing.Point(360, 316);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 1;
@@ -110,7 +112,7 @@ namespace meeting_test
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(423, 59);
+            this.label5.Location = new System.Drawing.Point(447, 59);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 30;
@@ -121,7 +123,6 @@ namespace meeting_test
             this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.richTextBox1.Location = new System.Drawing.Point(113, 204);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(514, 106);
             this.richTextBox1.TabIndex = 28;
             this.richTextBox1.Text = "";
@@ -181,28 +182,10 @@ namespace meeting_test
             this.label1.TabIndex = 23;
             this.label1.Text = "会议详情";
             // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox5.Location = new System.Drawing.Point(491, 56);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(115, 21);
-            this.textBox5.TabIndex = 42;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox6.Location = new System.Drawing.Point(275, 109);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(115, 21);
-            this.textBox6.TabIndex = 43;
-            // 
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox7.Location = new System.Drawing.Point(491, 109);
+            this.textBox7.Location = new System.Drawing.Point(530, 103);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(81, 21);
@@ -212,11 +195,59 @@ namespace meeting_test
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(447, 115);
+            this.label9.Location = new System.Drawing.Point(486, 109);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 46;
             this.label9.Text = "状态";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(241, 316);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "修改";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(515, 53);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(123, 21);
+            this.dateTimePicker1.TabIndex = 48;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {"电子线事业部", "声学事业部"});
+            this.comboBox1.Location = new System.Drawing.Point(314, 101);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 49;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(381, 53);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(46, 25);
+            this.button2.TabIndex = 50;
+            this.button2.Text = "选择";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(219, 103);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(38, 24);
+            this.button3.TabIndex = 51;
+            this.button3.Text = "选择";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormInfo_Sub
             // 
@@ -224,10 +255,13 @@ namespace meeting_test
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(676, 367);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -249,12 +283,18 @@ namespace meeting_test
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+
+        private System.Windows.Forms.ComboBox comboBox1;
+
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+
+        private System.Windows.Forms.Button button1;
+
         private System.Windows.Forms.Label label9;
 
         public System.Windows.Forms.TextBox textBox7;
-
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.TextBox textBox6;
 
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;

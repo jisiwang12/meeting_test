@@ -13,18 +13,21 @@ namespace meeting_test.dao
      */
     class My_SqlCon
     {
-        private String sqlStringCon = "server=10.86.36.96;uid=gsq;pwd=123;database=My_Test";
-        
+        private String sqlStringCon = "server=10.86.36.28;uid=sa;pwd=123;database=Meeting";
+
+        public SqlConnection GetConnection()
+        {
+            var sqlConnection = new SqlConnection(sqlStringCon);
+            return sqlConnection;
+        }
         /**
          * 验证用户
          * @mysql 传入数据库参数 
          */
-        public SqlDataReader getSqlDr_Login(String mysql)
+        public SqlDataReader getSqlDr_Login(String mysql,SqlConnection sqlConnection)
         {
-            SqlConnection connection = new SqlConnection(sqlStringCon);
-            
-            SqlCommand cmd = new SqlCommand(mysql, connection);
-            connection.Open();
+            SqlCommand cmd = new SqlCommand(mysql, sqlConnection);
+            sqlConnection.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             return dr;
         }
@@ -33,21 +36,19 @@ namespace meeting_test.dao
          * 获取sqlcommand
          * @mysql 数据库语句
          */
-        public SqlCommand getCmd(String mysql)
+        public SqlCommand getCmd(String mysql,SqlConnection connection)
         {
-            SqlConnection connection = new SqlConnection(sqlStringCon);
+         
             SqlCommand cmd = new SqlCommand(mysql, connection);
             connection.Open();
             return cmd;
         }
-
         /**
          * 获取SqlDateSet
          * @mysql 传入的字符串参数
          */
-        public DataSet getSqlds(String mysql)
+        public DataSet getSqlds(String mysql,SqlConnection connection)
         {
-            SqlConnection connection = new SqlConnection(sqlStringCon);
             DataSet dataSet = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(mysql, connection);
             connection.Open();

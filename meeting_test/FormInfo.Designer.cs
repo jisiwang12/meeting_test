@@ -227,7 +227,7 @@ namespace meeting_test
             this.textBox7.Location = new System.Drawing.Point(491, 109);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(75, 21);
+            this.textBox7.Size = new System.Drawing.Size(115, 21);
             this.textBox7.TabIndex = 45;
             // 
             // FormInfo

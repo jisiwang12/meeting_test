@@ -17,6 +17,20 @@ namespace meeting_test.domain
         private String bu;
         private String timeformat;
         private String subject;
+        private String timeout;
+        private String substatus;
+
+        public string Timeout
+        {
+            get => timeout;
+            set => timeout = value;
+        }
+
+        public string Substatus
+        {
+            get => substatus;
+            set => substatus = value;
+        }
 
         public string Faqiren
         {

@@ -20,7 +20,8 @@ namespace meeting_test
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
                            + $"time as 完成时间,zherenren as 责任人 from task where faqiren='{Main_Menu.userInfo.Username}' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
-            DataSet ds = mySqlCon.getSqlds(mysql);
+            var sqlConnection = mySqlCon.GetConnection();
+            DataSet ds = mySqlCon.getSqlds(mysql,sqlConnection);
             dataGridView1.DataSource = ds.Tables[0];
             /*//设置数据表格上显示的列标题
             dataGridView1.Columns[0].HeaderText = "编号";
@@ -38,14 +39,16 @@ namespace meeting_test
             //整行选中
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;       
             this.dataGridView1.RowHeadersVisible = false;
+            sqlConnection.Close();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             task = new Task();
             var mySqlCon = new My_SqlCon();
+            var sqlConnection = mySqlCon.GetConnection();
             String serial = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'");
+            var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'",sqlConnection);
             if (dr.Read())
             {
                 task.Id = dr[0].ToString();
@@ -62,9 +65,9 @@ namespace meeting_test
                 task.Timeformat = dr[11].ToString();
                 task.Subject = dr[12].ToString();
             }
-
             var formInfo_Sub = new FormInfo_Sub(task);
             dr.Close();
+            sqlConnection.Close();
             formInfo_Sub.ShowDialog();
         }
     }

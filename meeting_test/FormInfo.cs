@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using meeting_test.dao;
 using meeting_test.domain;
@@ -31,7 +32,14 @@ namespace meeting_test
             textBox6.Text = task.Bu;
             textBox4.Text = task.Subject;
             richTextBox1.Text = task.Content;
-            textBox7.Text = task.Status;
+            if (task.Timeout == "1")
+            {
+                textBox7.Text = task.Status + "(已超时)";
+            }
+            else
+            {
+                textBox7.Text = task.Status;
+            }
         }
 
         private void FormInfo_Load(object sender, EventArgs e)
@@ -56,26 +64,32 @@ namespace meeting_test
 
             }else if (button4.Text=="退回责任人")
             {
-                mysql = $"update task set status='审核退回' where serial='{task.Serial}'";
-                var cmd = mySqlCon.getCmd(mysql: mysql);
+                mysql = $"update task set status='审核退回',substatus=0 where serial='{task.Serial}'";
+                var sqlConnection = mySqlCon.GetConnection();
+                var cmd = mySqlCon.getCmd(mysql: mysql,sqlConnection);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("退回成功");
+                    sqlConnection.Close();
                     this.Close();
                 }
+                
                 else
                 {
                     MessageBox.Show("服务器正忙，请稍后再试");
                 }
             }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            var sqlConnection = mySqlCon.GetConnection();
             if (this.button3.Text=="确认审核")
             {
-                mysql = $"update task set status='已结案' where serial='{task.Serial}'";
-                var cmd = mySqlCon.getCmd(mysql: mysql);
+                mysql = $"update task set status='已结案',shenhetime='{DateTime.Now.ToString()}' where serial='{task.Serial}'";
+                
+                var cmd = mySqlCon.getCmd(mysql: mysql,sqlConnection);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("提交成功");
@@ -87,8 +101,8 @@ namespace meeting_test
                 }
             }else if (button3.Text=="确认完成" || button3.Text=="提交")
             {
-                mysql = $"update task set status='待审核' where serial='{task.Serial}'";
-                var cmd = mySqlCon.getCmd(mysql: mysql);
+                mysql = $"update task set status='待审核',substatus=1,subtime='{DateTime.Now.ToString()}' where serial='{task.Serial}'";
+                var cmd = mySqlCon.getCmd(mysql: mysql,sqlConnection);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("提交成功");
@@ -99,6 +113,7 @@ namespace meeting_test
                     MessageBox.Show("服务器正忙，请稍后再试");
                 }
             }
+            sqlConnection.Close();
         }
     }
 }

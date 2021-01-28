@@ -25,10 +25,17 @@ namespace meeting_test
         
         private void Task_Waitting_Load(object sender, EventArgs e)
         {
+            this.setDateView();
+        }
+
+        //设置视图的数据和格式
+        public void setDateView()
+        {
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
-                           + $"time as 完成时间,zherenren as 责任人 from task where (zherenren='{Main_Menu.userInfo.Username}' or shenheren='{Main_Menu.userInfo.Username}') and status != '已结案' order by sqtime desc";
+                           + $"time as 完成时间,zherenren as 责任人 from task where ((shenheren = '{Main_Menu.userInfo.Username}' and substatus = 1) or (zherenren = '{Main_Menu.userInfo.Username}' and substatus = 0)) and status != '已结案' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
-            DataSet ds = mySqlCon.getSqlds(mysql);
+            var sqlConnection = this.mySqlCon.GetConnection();
+            DataSet ds = mySqlCon.getSqlds(mysql,sqlConnection);
             this.dataGridView1.DataSource = ds.Tables[0];
             this.dataGridView1.RowHeadersVisible = false;
             //设置数据表格为只读
@@ -45,6 +52,7 @@ namespace meeting_test
             dataGridView1.MultiSelect = false;
             //整行选中
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            sqlConnection.Close();
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -53,19 +61,27 @@ namespace meeting_test
             {
                 var dataGridViewRow = dataGridView1.Rows[i];
                 var nowTime = DateTime.Now.ToString("yyMMdd");
+                //完成时间小于当天日期，字体显示为红色
                 if (int.Parse(Convert.ToDateTime(dataGridViewRow.Cells["完成时间"].Value.ToString()).ToString("yyMMdd")) -
                     int.Parse(DateTime.Now.ToString("yyMMdd")) < 0)
                 {
                     dataGridViewRow.DefaultCellStyle.ForeColor = Color.Red;
                     dataGridViewRow.DefaultCellStyle.SelectionBackColor = Color.Red;
-                    if (dataGridViewRow.Cells["状态"].Value.ToString() != "已超时")
+                    /*if (dataGridViewRow.Cells["状态"].Value.ToString() != "已超时")
                     {
                         var sqlCommand =
                             mySqlCon.getCmd(
                                 $"update task set status='已超时' where serial='{dataGridViewRow.Cells["单号"].Value.ToString()}'");
                         sqlCommand.ExecuteNonQuery();
                         dataGridViewRow.Cells["状态"].Value = "已超时";
-                    }
+                    }*/
+                    var sqlConnection = mySqlCon.GetConnection();
+                    var sqlCommand =
+                        mySqlCon.getCmd(
+                            $"update task set timeout=1 where serial='{dataGridViewRow.Cells["单号"].Value.ToString()}'",sqlConnection);
+                    sqlCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    
                 }
             }
   
@@ -77,9 +93,10 @@ namespace meeting_test
             try
             {
                 task = new Task();
-                var mySqlCon = new My_SqlCon();
+                
                 String serial = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'");
+                var sqlConnection = mySqlCon.GetConnection();
+                var dr = mySqlCon.getSqlDr_Login($"select * from task where serial='{serial}'",sqlConnection);
                 if (dr.Read())
                 {
                     task.Id = dr[0].ToString();
@@ -95,13 +112,18 @@ namespace meeting_test
                     task.Faqiren = dr[10].ToString();
                     task.Timeformat = dr[11].ToString();
                     task.Subject = dr[12].ToString();
+                    task.Timeout = dr[13].ToString();
+                    task.Substatus = dr[14].ToString();
                 }
-
+                dr.Close();
+                sqlConnection.Close();
                 var formInfo = new FormInfo(task);
-                formInfo.ShowDialog();
+                formInfo.ShowDialog();  
             }
             catch (Exception exception)
             {
+               
+                
             }
           
         }

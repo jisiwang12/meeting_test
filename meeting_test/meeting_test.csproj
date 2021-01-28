@@ -29,7 +29,7 @@
     <PublisherName>gsq</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -120,6 +120,7 @@
       <DependentUpon>ChooseUser.cs</DependentUpon>
     </Compile>
     <Compile Include="dao\My_SqlCon.cs" />
+    <Compile Include="dao\SQlConPool.cs" />
     <Compile Include="domain\Task.cs" />
     <Compile Include="domain\UserInfo.cs" />
     <Compile Include="FormInfo.cs">
@@ -237,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="20210107090053983_easyicon_net_48.ico" />
+    <Content Include="test.js" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

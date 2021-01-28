@@ -95,14 +95,18 @@ namespace meeting_test
             chooseUser.ShowDialog();
         }
 
+        /**
+         * 生成单号
+         */
         private String getSerial()
         {
             String mysql = "";
             String serialString = null;
+            var connection = mySqlCon.GetConnection();
             if (comboBox1.Text=="电子线事业部")
             {
                 mysql = "select max(left(right(serial,9),6)),MAX(right(serial,9)) from task where serial like 'HLCQ%'";
-                DataSet dataSet = mySqlCon.getSqlds(mysql);
+                DataSet dataSet = mySqlCon.getSqlds(mysql,connection);
                 String maxSer = dataSet.Tables[0].Rows[0][0].ToString();
                 String maxSerL = dataSet.Tables[0].Rows[0][1].ToString();
                 if (maxSer.Equals(DateTime.Now.ToString("yyMMdd")) )
@@ -117,7 +121,7 @@ namespace meeting_test
             }else if (comboBox1.Text=="声学事业部")
             {
                 mysql = "select max(left(right(serial,9),6)),MAX(right(serial,9)) from task where serial like 'HLSX%'";
-                DataSet dataSet = mySqlCon.getSqlds(mysql);
+                DataSet dataSet = mySqlCon.getSqlds(mysql,connection);
                 String maxSer = dataSet.Tables[0].Rows[0][0].ToString();
                 String maxSerL = dataSet.Tables[0].Rows[0][1].ToString();
                 if (maxSer.Equals(DateTime.Now.ToString("yyMMdd")) )
@@ -129,7 +133,7 @@ namespace meeting_test
                     serialString= "HLSX" + DateTime.Now.ToString("yyMMdd") + "001";
                 }
             }
-
+            connection.Close();
             return serialString;
         }
 
@@ -146,17 +150,18 @@ namespace meeting_test
             else
             {
                 var serial = this.getSerial();
-                String status = "待处理";
+                String status = "待完成";
                 
                 //String mysql = "insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject)"+
                               // " values ('"+textBox1.Text+"','"+textBox2.Text+"','"+dateTimePicker1.Value+"','"+textBox3.Text+"','"+richTextBox1.Text+"','"+DateTime.Now+"','"+comboBox1.Text+"','"+serial+"','"+textBox4.Text+"')";
                               String mysql =
-                                  $"insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject,status) values ('{textBox1.Text}','{textBox2.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}','{textBox3.Text}','{richTextBox1.Text}','{DateTime.Now}','{comboBox1.Text}','{serial}','{textBox4.Text}','{status}')";
-                              
-                SqlCommand cmd = mySqlCon.getCmd(mysql);
+                                  $"insert into task(faqiren,shenheren,time,zherenren,content,sqtime,bu,serial,subject,status,substatus) values ('{textBox1.Text}','{textBox2.Text}','{dateTimePicker1.Value.ToString("yyyy-MM-dd")}','{textBox3.Text}','{richTextBox1.Text}','{DateTime.Now}','{comboBox1.Text}','{serial}','{textBox4.Text}','{status}','0')";
+                              var sqlConnection = mySqlCon.GetConnection();
+                              SqlCommand cmd = mySqlCon.getCmd(mysql,sqlConnection);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("提交成功");
+                    sqlConnection.Close();
                     this.Close();
                 }
                 else
@@ -182,5 +187,12 @@ namespace meeting_test
         {
             
         }
+
+        private void Add_Meeting_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
+        
+        
     }
 }

@@ -34,16 +34,14 @@ namespace meeting_test
                 My_Utils.XMLUtils("setautorun", "1");
             }
             this.Auto_Login();
-            
         }
         public bool Sql(){
-          
             My_SqlCon sqlCon = new My_SqlCon();
+            var sqlConnection = sqlCon.GetConnection();
             SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where gh='" + textBox_UserName.Text +
-                                                   "'and passwd='" + textBox_Passwd.Text + "'");
-
+                                                     "'and passwd='" + textBox_Passwd.Text + "'",sqlConnection);
             if (dr.Read())
-            {
+            { 
                 String username = (string)dr[0];
                 Main_Menu.userInfo = new UserInfo();
                 Main_Menu.userInfo.Username = username;
@@ -51,6 +49,7 @@ namespace meeting_test
                 return true;
             }
             dr.Close();
+            sqlConnection.Close();
             return false;
            
         }
@@ -59,10 +58,18 @@ namespace meeting_test
         {
             string path = Application.ExecutablePath;
             RegistryKey rk = Registry.CurrentUser;
-            RegistryKey rk2 = rk.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            rk2.SetValue("Meeting", path);
-            rk2.Close();
-            rk.Close();
+            try
+            {
+                RegistryKey rk2 = rk.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+                rk2.SetValue("Meeting", path);
+                rk2.Close();
+                rk.Close();
+            }
+            catch (Exception e)
+            {
+               
+            }
+           
         }
 
         public void Auto_Login()
@@ -73,8 +80,9 @@ namespace meeting_test
             if (islogined == "1")
             {
                 My_SqlCon sqlCon = new My_SqlCon();
+                var sqlConnection = sqlCon.GetConnection();
                 SqlDataReader dr = sqlCon.getSqlDr_Login("select * from usermanage where gh='" + usernameConfig +
-                                                         "'and passwd='" + passwd + "'");
+                                                         "'and passwd='" + passwd + "'",sqlConnection);
                 if (dr.Read())
                 {
                     String username = (string)dr[0];
@@ -82,9 +90,9 @@ namespace meeting_test
                     Main_Menu.userInfo.Username = username;
                     Main_Menu.userInfo.Type = (string) dr[2];
                     dr.Close();
+                    sqlConnection.Close();
                     var thread1 = new Thread(this.openForm);
                     thread1.Start();
-                  
                 }
             }
         }

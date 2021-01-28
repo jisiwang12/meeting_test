@@ -99,6 +99,8 @@ namespace meeting_test
             if (userInfo.Type.Trim() != "admin")
             {
                 this.pictureBox1.Visible = false;
+                this.pictureBox2.Location = new Point(55, 211);
+                
             }
         }
         
@@ -239,6 +241,11 @@ namespace meeting_test
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
+        }
+
+        private void Panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }
