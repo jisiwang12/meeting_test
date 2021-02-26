@@ -162,12 +162,6 @@
     <Compile Include="Task_Waitting.Designer.cs">
       <DependentUpon>Task_Waitting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="utils\My_Utils.cs" />
     <EmbeddedResource Include="Add_Meeting.resx">
       <DependentUpon>Add_Meeting.cs</DependentUpon>
@@ -202,9 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Task_Waitting.resx">
       <DependentUpon>Task_Waitting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="meeting_test_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />

@@ -14,14 +14,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Meeting.exe.manifest" size="5488">
+    <dependentAssembly dependencyType="install" codebase="Meeting.exe.manifest" size="5489">
       <assemblyIdentity name="Meeting.exe" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GcwqVN+byK6Uwotc79ZkS4yn7C8j1REEnl2cbw35Pyw=</dsig:DigestValue>
+        <dsig:DigestValue>HngvdVtaNOuaFd5udgCoSXM6g4QgCl0Mt+l/LeW4OEs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

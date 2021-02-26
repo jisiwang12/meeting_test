@@ -7,7 +7,6 @@ C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Cho
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Task_Waitting.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Submitted.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.FormInfo.resources
-C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.Test.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\obj\Debug\meeting_test.FormInfo_Sub.resources
 C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\Meeting.exe.config
 C:\Users\xx007\source\repos\meeting_test\meeting_test\bin\Debug\Meeting.exe.manifest

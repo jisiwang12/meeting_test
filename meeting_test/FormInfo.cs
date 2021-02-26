@@ -12,9 +12,11 @@ namespace meeting_test
         private My_SqlCon mySqlCon = new My_SqlCon();
         private Task task;
         private String mysql;
-        public FormInfo(Task task)
+        private Task_Waitting taskWaitting;
+        public FormInfo(Task task,Task_Waitting taskWaitting)
         {
             this.task = task;
+            this.taskWaitting = taskWaitting;
             InitializeComponent();
         }
 
@@ -49,7 +51,7 @@ namespace meeting_test
             {
                 button3.Text = "确认审核";
                 button4.Text = "退回责任人";
-               
+                
             }else if (task.Status=="待处理")
             {
                 button3.Text = "确认完成";
@@ -70,6 +72,7 @@ namespace meeting_test
                 if (cmd.ExecuteNonQuery() != 0)
                 {
                     MessageBox.Show("退回成功");
+                    
                     sqlConnection.Close();
                     this.Close();
                 }
@@ -88,7 +91,6 @@ namespace meeting_test
             if (this.button3.Text=="确认审核")
             {
                 mysql = $"update task set status='已结案',shenhetime='{DateTime.Now.ToString()}' where serial='{task.Serial}'";
-                
                 var cmd = mySqlCon.getCmd(mysql: mysql,sqlConnection);
                 if (cmd.ExecuteNonQuery() != 0)
                 {
@@ -113,6 +115,7 @@ namespace meeting_test
                     MessageBox.Show("服务器正忙，请稍后再试");
                 }
             }
+            taskWaitting.setDateView();
             sqlConnection.Close();
         }
     }

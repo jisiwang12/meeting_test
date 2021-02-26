@@ -117,7 +117,7 @@ namespace meeting_test
                 }
                 dr.Close();
                 sqlConnection.Close();
-                var formInfo = new FormInfo(task);
+                var formInfo = new FormInfo(task,this);
                 formInfo.ShowDialog();  
             }
             catch (Exception exception)

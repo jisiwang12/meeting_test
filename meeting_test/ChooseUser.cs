@@ -84,7 +84,7 @@ namespace meeting_test
             //搜索姓名
             if (!String.IsNullOrEmpty(textBox1.Text)&&string.IsNullOrEmpty(textBox2.Text))
             {
-                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username='{textBox1.Text}'",sqlConnection);
+                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username like '%{textBox1.Text}%'",sqlConnection);
                 dataGridView1.DataSource = dataSet.Tables[0];
                 
                 
@@ -96,9 +96,10 @@ namespace meeting_test
                 dataGridView1.DataSource = dataSet.Tables[0];
             }
 
+            
             if (!string.IsNullOrEmpty(textBox1.Text)&&!String.IsNullOrEmpty(textBox2.Text))
             {
-                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username='{textBox1.Text}' and gh='{textBox2.Text}'",sqlConnection);
+                var dataSet = mySqlCon.getSqlds($"select username as 姓名,gh as 工号 from usermanage where username like '%{textBox1.Text}%' and gh='{textBox2.Text}'",sqlConnection);
                 dataGridView1.DataSource = dataSet.Tables[0];
             }
             

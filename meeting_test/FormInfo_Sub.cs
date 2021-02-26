@@ -11,15 +11,15 @@ namespace meeting_test
         private My_SqlCon mySqlCon = new My_SqlCon();
         private Task task;
         private String mysql;
+        private Submitted submitted;
     
-        public FormInfo_Sub(Task task)
+        public FormInfo_Sub(Task task,Submitted submitted)
         {
             this.task = task;
+            this.submitted = submitted;
             InitializeComponent();
         }
         
-      
-
         public FormInfo_Sub()
         {
             
@@ -35,19 +35,19 @@ namespace meeting_test
             textBox4.Text = task.Subject;
             richTextBox1.Text = task.Content;
             textBox7.Text = task.Status;
-             
+            
         }
         
         public void ChangeTask()
         {
-            String mysql = $"update task set changetime='{DateTime.Now.ToString()}',shenheren='{textBox2.Text.ToString()}'," +
-                           $"time='{dateTimePicker1.Text.ToString()}',zherenren='{textBox3.Text.ToString()}'," +
-                           $"bu='{comboBox1.Text.ToString()}',subject='{textBox4.Text.ToString()}',content='{richTextBox1.Text.ToString()}' " +
+            String mysql = $"update task set changetime='{DateTime.Now}',shenheren='{textBox2.Text.ToString()}'," +
+                           $"time='{dateTimePicker1.Value.ToString("yyyy-MM-dd")}',zherenren='{textBox3.Text.ToString()}'," +
+                           $"bu='{comboBox1.Text.ToString()}',subject='{textBox4.Text.ToString()}',content='{richTextBox1.Text.ToString()}',substatus=0 " +
                            $"where serial='{task.Serial}'";
             var sqlCon = new My_SqlCon();
             var connection = sqlCon.GetConnection();
             var sqlCommand = sqlCon.getCmd(mysql, connection);
-            if (sqlCommand.ExecuteNonQuery() != 0)    
+            if (sqlCommand.ExecuteNonQuery() != 0)  
             {
                 MessageBox.Show("修改成功");
                 connection.Close();
@@ -57,6 +57,7 @@ namespace meeting_test
             {
                 MessageBox.Show("服务器正忙，请稍后再试");
             }
+            submitted.SetDataView();
         }
 
         private void FormInfo_Load(object sender, EventArgs e)

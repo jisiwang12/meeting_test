@@ -17,6 +17,11 @@ namespace meeting_test
 
         private void Submitted_Load(object sender, EventArgs e)
         {
+            this.SetDataView();
+        }
+
+        public void SetDataView()
+        {
             String mysql = $"select serial as 单号, status as 状态,subject as 会议主题,content as 项目内容,"
                            + $"time as 完成时间,zherenren as 责任人 from task where faqiren='{Main_Menu.userInfo.Username}' order by sqtime desc";
             My_SqlCon mySqlCon = new My_SqlCon();
@@ -37,7 +42,7 @@ namespace meeting_test
             //只允许选中单行
             dataGridView1.MultiSelect = false;
             //整行选中
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;       
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.RowHeadersVisible = false;
             sqlConnection.Close();
         }
@@ -65,7 +70,7 @@ namespace meeting_test
                 task.Timeformat = dr[11].ToString();
                 task.Subject = dr[12].ToString();
             }
-            var formInfo_Sub = new FormInfo_Sub(task);
+            var formInfo_Sub = new FormInfo_Sub(task,this);
             dr.Close();
             sqlConnection.Close();
             formInfo_Sub.ShowDialog();
